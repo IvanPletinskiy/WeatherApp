@@ -1,11 +1,12 @@
 package com.handen.wetherapp.model
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface CityDao {
     @Query("SELECT * FROM cities_table")
-    fun getAllCities(): List<City>
+    fun getAllCities(): LiveData<MutableList<City>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addOrUpdateCity(city: City)

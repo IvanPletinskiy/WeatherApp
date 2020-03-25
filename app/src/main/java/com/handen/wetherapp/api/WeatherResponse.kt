@@ -1,8 +1,9 @@
 package com.handen.wetherapp.api
 
 import com.google.gson.annotations.SerializedName
+import kotlin.math.roundToInt
 
-class WeatherResponse() {
+public class WeatherResponse {
 
     @SerializedName("coord")
     var coord: Coord? = null
@@ -11,9 +12,9 @@ class WeatherResponse() {
     @SerializedName("base")
     var base: String? = null
     @SerializedName("main")
-    var main: Main? = null
+    lateinit var main: Main
     @SerializedName("wind")
-    var wind: Wind? = null
+    lateinit var _wind: Wind
     @SerializedName("clouds")
     var clouds: Clouds? = null
     @SerializedName("dt")
@@ -89,3 +90,18 @@ class WeatherResponse() {
         var deg = 0.0
     }
 }
+
+val WeatherResponse.temp: Int
+    get() {
+        return this.main.temp.roundToInt()
+    }
+
+val WeatherResponse.humidity: Int
+    get() {
+        return this.main.humidity
+    }
+
+val WeatherResponse.wind: Int
+    get() {
+        return this._wind.speed.roundToInt()
+    }

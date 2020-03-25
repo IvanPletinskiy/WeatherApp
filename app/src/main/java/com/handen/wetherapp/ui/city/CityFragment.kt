@@ -1,4 +1,4 @@
-package com.handen.wetherapp.ui.home
+package com.handen.wetherapp.ui.city
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,21 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.handen.wetherapp.R
+import com.handen.wetherapp.viewmodel.CitiesViewModel
 
-class HomeFragment : Fragment() {
+class CityFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var citiesViewModel: CitiesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        citiesViewModel =
+                ViewModelProviders.of(this).get(CitiesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

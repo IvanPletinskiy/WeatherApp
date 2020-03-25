@@ -10,5 +10,5 @@ interface WeatherApi {
     }
 
     @GET("/data/2.5/weather?lat={lat}&lon=139&appid=$apiKey")
-    fun getCityWeather(@Path("lat") lat: Long, @Path("lon") lon: Long): Call<WeatherResponse>
+    fun getCityWeather(@Path("lat") lat: Double, @Path("lon") lon: Double): Call<WeatherResponse>
 }

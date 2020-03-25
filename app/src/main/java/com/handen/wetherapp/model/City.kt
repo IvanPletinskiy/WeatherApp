@@ -10,7 +10,7 @@ data class City (
     var lat: Double,
     var long: Double,
     var temp: Int,
-    var humility: Int,
+    var humidity: Int,
     var wind: Int,
     @ColumnInfo(name = "last_fetched")
     var lastFetched: Long
